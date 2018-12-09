@@ -19,22 +19,11 @@ async function start_game() {
     		document.getElementById("gameInfo").textContent = "Game beginning in " + timeleft;
     	}
     	else {
-    		document.getElementById("gameInfo").textContent = "Timer: " + timer-3;
+    		document.getElementById("gameInfo").textContent = "Timer: " + (timer - 3) + " seconds";
     	}
-    	// if(timeleft <= 0)
+    	// if(game_started == false)
     	//     clearInterval(countdownTimer);
     	},1000);
-    // var timer = 0;
-    // var countupTimer = setInterval(function(){
-    // 	timer++;
-    // 	if(timer > 0) {
-    // 		document.getElementById("gameInfo").textContent = "Timer: " + timer;
-    // 	}
-    // 	console.log("Timer: " + timer);
-    // 	if(game_started == false) {
-    // 		clearInterval(countupTimer);
-    // 	}
-    // }, 1000);
 }
 function stop_game() {
 	game_started = false;
