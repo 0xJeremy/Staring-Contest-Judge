@@ -9,6 +9,7 @@ var game_started = 0;
 function pad ( val ) { return val > 9 ? val : "0" + val; }
 
 async function start_game() {
+	document.getElementById("gameOver").textContent += "";
 	var timeleft = 3;
 	var timer = 0;
     var countdownTimer = setInterval(function(){
@@ -33,7 +34,7 @@ function stop_game() {
 
 document.addEventListener('blinkEvent', function() {
 	if(game_started == 1) {
-		document.getElementById("gameInfo").textContent += "\nGame over!";
+		document.getElementById("gameOver").textContent += "You blinked! Game over!";
 		game_started = 0;
 	}
 });
