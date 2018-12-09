@@ -6,25 +6,35 @@ var countdown = 0;
 
 var game_started = false;
 
-function start_game() {
+function pad ( val ) { return val > 9 ? val : "0" + val; }
+
+async function start_game() {
 	game_started = true;
-	// document.getElementById('gameInfo').innerHTML = "GAME STARTING";
-	// setTimeout(function (){
-	// 	document.getElementById('gameInfo').innerHTML = "Game beginning in 3...";
-	// }, 1000);
-	// setTimeout(function (){
-	// 	document.getElementById('gameInfo').innerHTML = "Game beginning in 2...";
-	// }, 1000);
-	// setTimeout(function (){
-	// 	document.getElementById('gameInfo').innerHTML = "Game beginning in 1...";
-	// }, 1000);
-	// var start = new Date().getTime();
-	// while(game_started) {
-	// 	var current = new Date().getTime();
-	// 	var distance = current - start;
-	// 	var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-	// 	document.getElementById('gameInfo').innerHTML = seconds;
-	// }
+	var timeleft = 3;
+	var timer = 0;
+    var countdownTimer = setInterval(function(){
+    	timeleft--;
+    	timer++;
+    	if(timeleft > 0) {
+    		document.getElementById("gameInfo").textContent = "Game beginning in " + timeleft;
+    	}
+    	else {
+    		document.getElementById("gameInfo").textContent = "Timer: " + timer-3;
+    	}
+    	// if(timeleft <= 0)
+    	//     clearInterval(countdownTimer);
+    	},1000);
+    // var timer = 0;
+    // var countupTimer = setInterval(function(){
+    // 	timer++;
+    // 	if(timer > 0) {
+    // 		document.getElementById("gameInfo").textContent = "Timer: " + timer;
+    // 	}
+    // 	console.log("Timer: " + timer);
+    // 	if(game_started == false) {
+    // 		clearInterval(countupTimer);
+    // 	}
+    // }, 1000);
 }
 function stop_game() {
 	game_started = false;
