@@ -7,8 +7,6 @@ var countdown = 0;
 var game_started = 0;
 
 var user_score = 0;
-var user_name = "";
-var num_plays = 1;
 
 // Get the modal
 var modal = document.getElementById('myModal');
@@ -23,13 +21,11 @@ var span = document.getElementsByClassName("close")[0];
 // When the user clicks on the button, open the modal 
 btn.onclick = function() {
 	document.getElementById("user_score").value = user_score + " seconds";
-	document.getElementById("username").placeholder = "e.x. Robert Jacobs";
 	modal.style.display = "block";
 }
+
 save_button.onclick = function() {
-	user_name = document.getElementById("username").value;
 	modal.style.display = "none";
-	document.getElementById("scoreboard").innerHTML += "<tr><th scope=\"row\">" + num_plays + "</th><td>" + user_name + "</td><td>" + user_score + " seconds</td></tr>";
 }
 
 // When the user clicks on <span> (x), close the modal
@@ -46,7 +42,7 @@ window.onclick = function(event) {
 }
 
 async function start_game() {
-	document.getElementById("gameOver").textContent = "";
+	document.getElementById("gameOver").textContent += "";
 	var timeleft = 3;
 	var timer = 0;
     var countdownTimer = setInterval(function(){
@@ -62,8 +58,8 @@ async function start_game() {
     		game_started = 1;
     	}
     	if(game_started == 0 && timer > 3)
-    	    clearInterval(countdownTimer);
     		user_score = timer - 3;
+    	    clearInterval(countdownTimer);
     	},1000);
 }
 function stop_game() {
@@ -72,15 +68,17 @@ function stop_game() {
 
 document.addEventListener('blinkEvent', function() {
 	if(game_started == 1) {
-		document.getElementById("gameOver").textContent = "You blinked! Game over!";
+		document.getElementById("gameOver").textContent += "You blinked! Game over!";
 		game_started = 0;
-		document.getElementById("user_score").value = user_score + " seconds";
-		document.getElementById("username").placeholder = "e.x. Robert Jacobs";
 		modal.style.display = "block";
 	}
 });
 
 document.addEventListener('eyeTrackedEvent', function(event) {
+	// if(game_started == false) {
+	// 	document.getElementById('gameInfo').innerHTML = "Eyes Found. Game Ready to Begin!";
+	// }
+
 });
 
 require(['eyePlayer'], function(eyePlayer) {
