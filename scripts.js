@@ -30,6 +30,7 @@ save_button.onclick = function() {
 	user_name = document.getElementById("username").value;
 	modal.style.display = "none";
 	document.getElementById("scoreboard").innerHTML += "<tr><th scope=\"row\">" + num_plays + "</th><td>" + user_name + "</td><td>" + user_score + " seconds</td></tr>";
+	num_plays++;
 }
 
 // When the user clicks on <span> (x), close the modal
